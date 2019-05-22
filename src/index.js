@@ -3,21 +3,19 @@ import { createStore } from 'redux';
 const initialState = {
   beer: null,
   sandwich: null,
-  chips: null
+  chips: [null]
 };
 
 function reducer(state = initialState, action) {
   switch(action.type) {
     case 'ADD_BEER':
-      return { beer: action.payload };
-    case 'REMOVE_BEER':
-      return { beer: null };
+      return { ...state, beer: action.payload };
     case 'ADD_SWANDWICH':
-      return { sandwich: action.payload };
+      return { ...state, sandwich: action.payload };
     case 'REMOVE_SANDWICH':
-      return { sandwich: null };
+      return { ...state, sandwich: null };
     case 'ADD_CHIPS':
-      return { chips: action.payload };
+      return { ...state, chips: [...state.chips, action.payload] };
     case 'REMOVE_CHIPS':
       return { chips: null };
 
@@ -42,6 +40,11 @@ console.log('removed drink', store.getState());
 store.dispatch({
   type: 'ADD_CHIPS',
   payload: 'Salt and Vinegar'
+});
+console.log('add chips', store.getState());
+store.dispatch({
+  type: 'ADD_CHIPS',
+  payload: 'BBQ'
 });
 console.log('add chips', store.getState());
 store.dispatch({
