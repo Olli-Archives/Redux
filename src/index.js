@@ -1,9 +1,9 @@
 import { createStore } from 'redux';
-
+import { ADD_BEER, REMOVE_BEER, ADD_SWANDWICH, REMOVE_SANDWICH, ADD_CHIPS, REMOVE_CHIPS, addBeer, removeBeer, addSandwich, removeSandwich, addChips, removeChips } from './actions/lunchActions';
 const initialState = {
   beer: null,
   sandwich: null,
-  chips: [null]
+  chips: null
 };
 
 function reducer(state = initialState, action) {
@@ -15,9 +15,11 @@ function reducer(state = initialState, action) {
     case 'REMOVE_SANDWICH':
       return { ...state, sandwich: null };
     case 'ADD_CHIPS':
-      return { ...state, chips: [...state.chips, action.payload] };
+      return { ...state, chips: action.payload };
     case 'REMOVE_CHIPS':
       return { chips: null };
+    case 'REMOVE_BEER':
+      return { beer: null };
 
     default:
       return state;
@@ -26,39 +28,17 @@ function reducer(state = initialState, action) {
 
 const store = createStore(reducer);
 
-store.dispatch({
-  type: 'ADD_BEER',
-  payload: 'Pale Ale'
-});
+store.dispatch(addBeer('ipa'));
 console.log('added drink', store.getState());
-
-store.dispatch({
-  type: 'REMOVE_BEER',
-  payload: 'Pale Ale'
-});
+store.dispatch(removeBeer('ipa'));
 console.log('removed drink', store.getState());
-store.dispatch({
-  type: 'ADD_CHIPS',
-  payload: 'Salt and Vinegar'
-});
+store.dispatch(addChips('salt and vingar'));
 console.log('add chips', store.getState());
-store.dispatch({
-  type: 'ADD_CHIPS',
-  payload: 'BBQ'
-});
+store.dispatch(addChips('bbq'));
 console.log('add chips', store.getState());
-store.dispatch({
-  type: 'REMOVE_CHIPS',
-  payload: 'Salt and Vinegar'
-});
+store.dispatch(removeChips('bbq'));
 console.log('remove chips', store.getState());
-store.dispatch({
-  type: 'ADD_SWANDWICH',
-  payload: 'PBJ'
-});
+store.dispatch(addSandwich('pbj'));
 console.log('add sandwich', store.getState());
-store.dispatch({
-  type: 'REMOVE_SANDWICH',
-  payload: 'SPBJ'
-});
+store.dispatch(removeSandwich('pbj'));
 console.log('remove sandwich', store.getState());
