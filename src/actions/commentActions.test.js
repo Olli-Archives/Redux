@@ -6,7 +6,7 @@ describe('comment actions', ()=>{
       type: CREATE_COMMENT,
       payload: {
         postId: 'postId',
-        comment: 'comment'
+        comment: 'comment',
       }
     });
   });

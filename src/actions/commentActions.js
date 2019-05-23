@@ -6,7 +6,7 @@ export const createComment = (postId, comment) => {
     type: CREATE_COMMENT,
     payload: {
       postId: postId,
-      comment: comment
+      comment: comment,
     }
   };
 };
@@ -14,8 +14,8 @@ export const deleteComment = (postId, commentId) => {
   return {
     type: DELETE_COMMENT,
     payload: {
-      postId: postId,
-      commentId: commentId
+      commentId: commentId,
+      postId: postId
     }
   };
 };
