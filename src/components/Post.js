@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Post({ title }){
   return (
-    <p>{title}</p>
+    { title }
   );
 }
 
