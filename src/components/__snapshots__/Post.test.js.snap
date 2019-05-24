@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post component renders a title 1`] = `
+<p>
+  test title
+</p>
+`;
