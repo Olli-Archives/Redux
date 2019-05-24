@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function PostsForm({ text, handleSubmit, handleOnChange }){
+function PostsForm({ titleText, postText, handleSubmit, handleTitleOnChange, handlePostChange }){
+  
   return (
     <form onSubmit={handleSubmit}>
-      <input value={text} onChange={handleOnChange}></input>
+      <input placeholder='add title' value={titleText} onChange={handleTitleOnChange}></input>
+      <input placeholder='add post' value={postText} onChange={handlePostChange}></input>
       <button>SUBMIT!!!</button>
     </form>
 
@@ -13,9 +15,11 @@ function PostsForm({ text, handleSubmit, handleOnChange }){
 
 
 PostsForm.propTypes = {
-  text:PropTypes.string.isRequired,
+  titleText:PropTypes.string.isRequired,
+  postText:PropTypes.string.isRequired,
   handleSubmit:PropTypes.func.isRequired,
-  handleOnChange:PropTypes.func.isRequired
+  handleTitleOnChange:PropTypes.func.isRequired,
+  handlePostChange:PropTypes.func.isRequired
 };
 
 export default PostsForm;

@@ -13,16 +13,18 @@ export default function reducer(state = {}, action) {
         ]
 
       };
-    case DELETE_COMMENT:
-      
+    case DELETE_COMMENT:     
       return {
         ...state,
         [action.payload.postId]:[
           ...state[action.payload.postId].slice(0, action.payload.commentId),
           ...state[action.payload.postId].slice(action.payload.commentId + 1),
         ]
-     
-
+        
       };
+    default:
+      return state;
+    
   }
+  
 }

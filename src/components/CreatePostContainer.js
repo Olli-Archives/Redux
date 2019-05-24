@@ -1,26 +1,46 @@
 import React, { PureComponent } from 'react';
 import PostsForm from './PostsForm';
+import { connect } from 'react-redux';
+import { createPost } from '../actions/postActions';
+
+const mapDispatchToProps = dispatch => ({
+  onSubmit(title, body) {
+    dispatch(createPost(title, body));
+  }
+});
 
 class CreatePostContainer extends PureComponent{
+
 state={
-  text:'',
-  post:'',
-  
+  titleText:'',
+  postText:'',
+
 }
 
-handleSubmit(e){
+
+handleSubmit = (e)=>{
   e.preventDefault();
-  this.setState({ post:this.state.text });
+  const { titleText, postText } = this.state;
+  this.props.onSubmit(titleText, postText);
+  this.setState({ 
+    titleText:'',
+    postText:''
+  });
 }
 
-handleonChange({ target }){
-  this.setState({ text:target.value });
+
+handleTitleChange = ({ target })=>{
+  this.setState({ titleText:target.value });
+}
+
+handlePostChange = ({ target })=>{
+  this.setState({ postText:target.value });
 }
 
 render(){
   return (
     <>
-      <PostsForm text={this.state.text} handleSubmit={this.handleSubmit} handleOnChange={this.handleOnChange}/>
+      <PostsForm titleText={this.state.titleText} postText={this.state.postText} handleSubmit={this.handleSubmit} handleTitleOnChange={this.handleTitleChange} handlePostChange={this.handlePostChange} />
     </>
   );
 }
@@ -28,4 +48,7 @@ render(){
 
 
 
-export default CreatePostContainer;
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreatePostContainer);

@@ -1,4 +1,19 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import store from './store';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
+import Home from './Home';
+
+export default function App(){
+  return (
+    <Router>
+      <Switch>
+        {/* <Route path="/posts/:id" component={PostById} /> */}
+        <Route path="/" component={Home} />
+      </Switch>
+    </Router>
+  );
+}
