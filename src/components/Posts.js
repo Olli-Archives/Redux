@@ -2,20 +2,40 @@ import React from 'react';
 import Post from './Post';
 import PropTypes from 'prop-types';
 
-function Posts({ postsArray }){
 
-  const posts = postsArray.map((post, i)=>{
-    console.log('post', post);
-    return <li key={i}><Post title={post.title}/></li>;
-  });
+import { connect } from 'react-redux';
+import { getPosts } from '../selectors/postSelectors';
+
+const mapStateToProps = state => ({
+  posts: getPosts(state)
+});
+
+function Posts({ posts }){
+
+ 
+  const Posts = ()=>{
+    if(posts.length > 0){
+      return posts.map((post, i)=>{
+   
+        return <li key={i}><Post post={post}/></li>;
+      });
+    }
+    return <h1>no posts</h1>;
+  };
+
+
+  
 
   return (
-    <ul>{posts}</ul>
+    <ul><Posts/></ul>
   );
 }
 
+
 Posts.propTypes = {
-  postsArray: PropTypes.array.isRequired
+  posts:PropTypes.array
 };
 
-export default Posts;
+export default connect(
+  mapStateToProps,
+  null) (Posts);

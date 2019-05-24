@@ -2,17 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function Post({ post }){
-  return (
 
-    <Link to={`/comments/${post.id}`}>
-      <p> POST: { post.title } </p>
-    </Link>
+function Post({ comment }){
+  return (
+    <p> COMMENT: { comment} </p>
   );
 }
 
 Post.propTypes = {
-  
+  comment:PropTypes.string.isRequired
 };
 
 export default Post;

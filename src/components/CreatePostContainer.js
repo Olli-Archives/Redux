@@ -9,6 +9,8 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
+
+
 class CreatePostContainer extends PureComponent{
 
 state={
@@ -41,6 +43,7 @@ render(){
   return (
     <>
       <PostsForm titleText={this.state.titleText} postText={this.state.postText} handleSubmit={this.handleSubmit} handleTitleOnChange={this.handleTitleChange} handlePostChange={this.handlePostChange} />
+
     </>
   );
 }
@@ -48,7 +51,4 @@ render(){
 
 
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CreatePostContainer);
+export default connect(null, mapDispatchToProps)(CreatePostContainer);

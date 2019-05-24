@@ -6,14 +6,17 @@ import {
   Link
 } from 'react-router-dom';
 import Home from './Home';
+import Posts from './Posts';
+import CreateCommentContainer from './CreateCommentContainer';
 
 export default function App(){
   return (
     <Router>
       <Switch>
-        {/* <Route path="/posts/:id" component={PostById} /> */}
+        <Route path="/comments/:id" component={CreateCommentContainer} />
         <Route path="/" component={Home} />
       </Switch>
+      <Posts/>
     </Router>
   );
 }
