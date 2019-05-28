@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-function Posts({ posts, onClickDelete }){
+export function Posts({ posts, onClickDelete }){
 
 
   const PostsList = ()=>{

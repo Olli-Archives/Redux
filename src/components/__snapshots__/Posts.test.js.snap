@@ -2,26 +2,6 @@
 
 exports[`Posts component renders list of posts 1`] = `
 <ul>
-  <li
-    key="0"
-  >
-    <Post
-      title="1st post"
-    />
-  </li>
-  <li
-    key="1"
-  >
-    <Post
-      title="2nd post"
-    />
-  </li>
-  <li
-    key="2"
-  >
-    <Post
-      title="3rd post"
-    />
-  </li>
+  <PostsList />
 </ul>
 `;

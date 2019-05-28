@@ -1,3 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Post component renders a title 1`] = `<Component />`;
+exports[`Post component renders a title 1`] = `
+<Fragment>
+  <Link
+    to="/comments/id"
+  >
+    <p>
+       POST: 
+       
+    </p>
+    <p>
+      POST BODY: 
+    </p>
+  </Link>
+  <p>
+    DELET POST
+  </p>
+</Fragment>
+`;
