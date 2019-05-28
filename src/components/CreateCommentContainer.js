@@ -3,6 +3,7 @@ import CommentsForm from './CommentsForm';
 import Comments from './Comments';
 import { connect } from 'react-redux';
 import { createComment } from '../actions/commentActions';
+import PropTypes from 'prop-types';
 
 const mapDispatchToProps = dispatch => ({
   onSubmit(postId, comment) {
@@ -11,6 +12,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class CreateCommentContainer extends PureComponent {
+
+  static propTypes ={
+    onSubmit: PropTypes.func.isRequired,
+    match: PropTypes.object
+  }
+
 
   state = {
     commentText: '',
@@ -26,7 +33,7 @@ class CreateCommentContainer extends PureComponent {
   }
 
   handleCommentChange = ({ target }) => {
-    console.log('target', target.value, 'state', this.state);
+ 
     this.setState({ commentText: target.value });
   }
 

@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 
-function Post({ comment }){
+
+function Comment({ comment, onClickDelete, postId, commentId }) {
   return (
-    <p> COMMENT: { comment} </p>
+    <>
+      <p> COMMENT: {comment} </p>
+      <p onClick = {()=>onClickDelete(postId, commentId) }> DELETE ME</p>
+    </>
   );
 }
 
-Post.propTypes = {
-  comment:PropTypes.string.isRequired
+Comment.propTypes = {
+  comment: PropTypes.string.isRequired,
+  onClickDelete: PropTypes.func.isRequired,
+  postId: PropTypes.string.isRequired,
+  commentId: PropTypes.string.isRequired
+
 };
 
-export default Post;
+export default Comment;
 

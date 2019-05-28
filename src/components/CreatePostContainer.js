@@ -2,21 +2,23 @@ import React, { PureComponent } from 'react';
 import PostsForm from './PostsForm';
 import { connect } from 'react-redux';
 import { createPost } from '../actions/postActions';
+import PropTypes from 'prop-types';
 
 const mapDispatchToProps = dispatch => ({
   onSubmit(title, body) {
     dispatch(createPost(title, body));
   }
+ 
 });
 
 
-
 class CreatePostContainer extends PureComponent{
-
 state={
   titleText:'',
   postText:'',
-
+}
+static propTypes = {
+  onSubmit: PropTypes.func.isRequired
 }
 
 
@@ -29,6 +31,7 @@ handleSubmit = (e)=>{
     postText:''
   });
 }
+
 
 
 handleTitleChange = ({ target })=>{
@@ -48,7 +51,5 @@ render(){
   );
 }
 }
-
-
 
 export default connect(null, mapDispatchToProps)(CreatePostContainer);
